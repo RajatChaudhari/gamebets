@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="premierleagueModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BetCategoryTable">
+    <Key>
+      <PropertyRef Name="BetCatID" />
+    </Key>
+    <Property Name="BetCatID" Type="int" Nullable="false" />
+    <Property Name="BetCategory" Type="nchar" MaxLength="10" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="BetPlacedTable">
+    <Key>
+      <PropertyRef Name="BetPlacedID" />
+    </Key>
+    <Property Name="BetPlacedID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="GameID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="BetTypeID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="BetCategory" Type="int" />
+    <Property Name="TeamID" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="PlayerID" Type="int" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Active" Type="bit" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="BetResultsTable">
+    <Key>
+      <PropertyRef Name="BetResultsID" />
+    </Key>
+    <Property Name="BetResultsID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BetPlacedID" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="Points" Type="int" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="BetTypeTable">
+    <Key>
+      <PropertyRef Name="BetTypeID" />
+    </Key>
+    <Property Name="BetTypeID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BetDescription" Type="nvarchar(max)" />
+    <Property Name="BetCategory" Type="int" />
+    <Property Name="BetValue" Type="int" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="GameTable">
+    <Key>
+      <PropertyRef Name="GameID" />
+    </Key>
+    <Property Name="GameID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Team1" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Team2" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Date" Type="date" Nullable="false" />
+    <Property Name="Time" Type="time" Precision="7" />
+    <Property Name="TeamWon" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="PlayerTable">
+    <Key>
+      <PropertyRef Name="PlayerID" />
+    </Key>
+    <Property Name="PlayerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PlayerName" Type="nvarchar(max)" />
+    <Property Name="PlayerType" Type="nvarchar" MaxLength="50" />
+    <Property Name="TeamID" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="StatsTable">
+    <Key>
+      <PropertyRef Name="ResultID" />
+    </Key>
+    <Property Name="ResultID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GameID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="TeamID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="PlayerID" Type="int" />
+    <Property Name="Runs" Type="int" />
+    <Property Name="Wickets" Type="int" />
+    <Property Name="Sixes" Type="int" />
+    <Property Name="Fours" Type="int" />
+    <Property Name="NotOut" Type="bit" />
+    <Property Name="BallsFaced" Type="int" />
+    <Property Name="MoM" Type="bit" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="TeamTable">
+    <Key>
+      <PropertyRef Name="TeamID" />
+    </Key>
+    <Property Name="TeamID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TeamName" Type="nvarchar(max)" />
+    <Property Name="City" Type="nvarchar(max)" />
+    <Property Name="Sport" Type="nvarchar(max)" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="UserTable">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MastekID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Employee_ID" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="User_Name" Type="nvarchar(max)" />
+    <Property Name="Project" Type="varchar" MaxLength="50" />
+    <Property Name="Active" Type="bit" />
+  </EntityType>
+  <Function Name="GetBets" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetGameDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="GameID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetPlayersForMatch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="GameID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SaveBets" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+    <Parameter Name="GameId" Type="int" Mode="In" />
+    <Parameter Name="BetTypeId" Type="int" Mode="In" />
+    <Parameter Name="BetCategory" Type="int" Mode="In" />
+    <Parameter Name="TeamId" Type="int" Mode="In" />
+    <Parameter Name="PlayerId" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="premierleagueModelStoreContainer">
+    <EntitySet Name="BetCategoryTable" EntityType="Self.BetCategoryTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BetPlacedTable" EntityType="Self.BetPlacedTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BetResultsTable" EntityType="Self.BetResultsTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BetTypeTable" EntityType="Self.BetTypeTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GameTable" EntityType="Self.GameTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PlayerTable" EntityType="Self.PlayerTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StatsTable" EntityType="Self.StatsTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TeamTable" EntityType="Self.TeamTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserTable" EntityType="Self.UserTable" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

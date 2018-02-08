@@ -1,0 +1,63 @@
+﻿
+@using mvcproject.Models;
+@model PlaceBetViewModel
+@{
+    @ViewBag.Message;
+}
+
+<h2>PlaceBet</h2>
+
+
+
+
+
+@using (Html.BeginForm("SaveBet", "Home", FormMethod.Post))
+{
+    <table>
+        <tr>
+            <td>
+                @Html.LabelFor(model=>model.GameID,Model.GameID.ToString(),"gameID")
+                @Html.HiddenFor(model => model.GameID)
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DropDownListFor(model => model.BetTypeId, new SelectList(Model.Bets, "BetTypeId", "BetDescription"), "Please Select")
+             </td>
+            
+            <td>
+                @Html.DropDownListFor(model => model.PlayerID, new SelectList(Model.Players, "PlayerID", "Player"), "Please Select")
+            </td>
+            <td>
+                <input type="submit" value="Submit"/>
+                
+            </td>
+        </tr>
+    </table>
+}
+
+
+
+@*@{
+    ViewBag.Title = "PlaceBet";
+    WebGrid grid = new WebGrid(columnNames: new[] { "Players", "Bets", "SaveBet" });
+}
+<h2>GameDetails</h2>
+
+@grid.GetHtml(
+        tableStyle: "table",
+        columns: grid.Columns(
+
+        grid.Column(columnName: "Date", header: "Players", format: (item) => string.Format("{0:dd-MMM-yyyy}", item.Date)),
+        grid.Column(columnName: "GAME_ID", header: "Bets", format:(item)=> {  @Html.DropDownListFor(model => Model.BetTypeId, Model.Bets}),
+        grid.Column(columnName: "TEAM_1_NAME", header: "Team 1"),
+        grid.Column(columnName: "TEAM_2_NAME", header: "Team 2"),
+        grid.Column(header: ""
+        , format: (item) =>
+        {
+            var link = Html.ActionLink("SaveBet", "SaveBet", new { id = item.GAME_ID });
+            return link;
+        }
+        )
+        ))*@

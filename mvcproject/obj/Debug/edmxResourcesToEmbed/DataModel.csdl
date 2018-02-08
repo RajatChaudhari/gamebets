@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="premierleagueModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BetCategoryTable">
+    <Key>
+      <PropertyRef Name="BetCatID" />
+    </Key>
+    <Property Name="BetCatID" Type="Int32" Nullable="false" />
+    <Property Name="BetCategory" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="BetPlacedTable">
+    <Key>
+      <PropertyRef Name="BetPlacedID" />
+    </Key>
+    <Property Name="BetPlacedID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="GameID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="BetTypeID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="BetCategory" Type="Int32" />
+    <Property Name="TeamID" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="PlayerID" Type="Int32" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="BetResultsTable">
+    <Key>
+      <PropertyRef Name="BetResultsID" />
+    </Key>
+    <Property Name="BetResultsID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BetPlacedID" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Points" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="BetTypeTable">
+    <Key>
+      <PropertyRef Name="BetTypeID" />
+    </Key>
+    <Property Name="BetTypeID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BetDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BetCategory" Type="Int32" />
+    <Property Name="BetValue" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="GameTable">
+    <Key>
+      <PropertyRef Name="GameID" />
+    </Key>
+    <Property Name="GameID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Team1" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Team2" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Time" Type="Time" Precision="7" />
+    <Property Name="TeamWon" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="PlayerTable">
+    <Key>
+      <PropertyRef Name="PlayerID" />
+    </Key>
+    <Property Name="PlayerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PlayerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PlayerType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TeamID" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="StatsTable">
+    <Key>
+      <PropertyRef Name="ResultID" />
+    </Key>
+    <Property Name="ResultID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GameID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="TeamID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="PlayerID" Type="Int32" />
+    <Property Name="Runs" Type="Int32" />
+    <Property Name="Wickets" Type="Int32" />
+    <Property Name="Sixes" Type="Int32" />
+    <Property Name="Fours" Type="Int32" />
+    <Property Name="NotOut" Type="Boolean" />
+    <Property Name="BallsFaced" Type="Int32" />
+    <Property Name="MoM" Type="Boolean" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="TeamTable">
+    <Key>
+      <PropertyRef Name="TeamID" />
+    </Key>
+    <Property Name="TeamID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TeamName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Sport" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="UserTable">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MastekID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Employee_ID" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="User_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Project" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" />
+  </EntityType>
+  <EntityContainer Name="premierleagueEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BetCategoryTables" EntityType="Self.BetCategoryTable" />
+    <EntitySet Name="BetPlacedTables" EntityType="Self.BetPlacedTable" />
+    <EntitySet Name="BetResultsTables" EntityType="Self.BetResultsTable" />
+    <EntitySet Name="BetTypeTables" EntityType="Self.BetTypeTable" />
+    <EntitySet Name="GameTables" EntityType="Self.GameTable" />
+    <EntitySet Name="PlayerTables" EntityType="Self.PlayerTable" />
+    <EntitySet Name="StatsTables" EntityType="Self.StatsTable" />
+    <EntitySet Name="TeamTables" EntityType="Self.TeamTable" />
+    <EntitySet Name="UserTables" EntityType="Self.UserTable" />
+    <FunctionImport Name="GetBets" ReturnType="Collection(premierleagueModel.GetBets_Result)" />
+    <FunctionImport Name="GetGameDetails" ReturnType="Collection(premierleagueModel.GetGameDetails_Result)">
+      <Parameter Name="GameID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetPlayersForMatch" ReturnType="Collection(premierleagueModel.GetPlayersForMatch_Result)">
+      <Parameter Name="GameID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SaveBets">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+      <Parameter Name="GameId" Mode="In" Type="Int32" />
+      <Parameter Name="BetTypeId" Mode="In" Type="Int32" />
+      <Parameter Name="BetCategory" Mode="In" Type="Int32" />
+      <Parameter Name="TeamId" Mode="In" Type="Int32" />
+      <Parameter Name="PlayerId" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="GetBets_Result">
+    <Property Type="Decimal" Name="BetTypeId" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="String" Name="BetDescription" Nullable="true" />
+    <Property Type="Int32" Name="BetCategory" Nullable="true" />
+    <Property Type="Int32" Name="BetValue" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetGameDetails_Result">
+    <Property Type="DateTime" Name="Date" Nullable="false" />
+    <Property Type="Decimal" Name="GAME_ID" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="TEAM_1_ID" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="TEAM_2_ID" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="String" Name="TEAM_1_NAME" Nullable="true" />
+    <Property Type="String" Name="TEAM_2_NAME" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetPlayersForMatch_Result">
+    <Property Type="Int32" Name="PlayerID" Nullable="false" />
+    <Property Type="String" Name="Player" Nullable="true" />
+    <Property Type="Decimal" Name="TeamID" Nullable="true" Precision="18" Scale="0" />
+  </ComplexType>
+</Schema>

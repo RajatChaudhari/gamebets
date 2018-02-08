@@ -1,0 +1,23 @@
+﻿@using mvcproject.Models;
+
+@model BetTypesModel
+
+@using (Html.BeginForm("SaveBet", "Home", FormMethod.Post))
+{
+    <table>
+        <tr>
+            <td>
+                @Html.DropDownListFor(model => model.betList, new SelectList(Model.betList, "BetTypeId", "BetDescription"), "Please Select")
+            </td>
+            <td>
+                @*@Html.LabelFor(model => model.GameID, new { Model.GameID });*@
+            </td>
+            <td>
+                @*@Html.DropDownListFor(model => model.Players, new SelectList(Model.Players, "PlayerID", "Player"), "Please Select")*@
+            </td>
+            <td>
+                <input type="submit" value="Submit" />
+            </td>
+        </tr>
+    </table>
+}

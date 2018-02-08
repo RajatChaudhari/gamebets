@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="premierleagueModelStoreContainer" CdmEntityContainer="premierleagueEntities">
+    <EntitySetMapping Name="BetCategoryTables">
+      <EntityTypeMapping TypeName="premierleagueModel.BetCategoryTable">
+        <MappingFragment StoreEntitySet="BetCategoryTable">
+          <ScalarProperty Name="BetCatID" ColumnName="BetCatID" />
+          <ScalarProperty Name="BetCategory" ColumnName="BetCategory" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BetPlacedTables">
+      <EntityTypeMapping TypeName="premierleagueModel.BetPlacedTable">
+        <MappingFragment StoreEntitySet="BetPlacedTable">
+          <ScalarProperty Name="BetPlacedID" ColumnName="BetPlacedID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="GameID" ColumnName="GameID" />
+          <ScalarProperty Name="BetTypeID" ColumnName="BetTypeID" />
+          <ScalarProperty Name="BetCategory" ColumnName="BetCategory" />
+          <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+          <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BetResultsTables">
+      <EntityTypeMapping TypeName="premierleagueModel.BetResultsTable">
+        <MappingFragment StoreEntitySet="BetResultsTable">
+          <ScalarProperty Name="BetResultsID" ColumnName="BetResultsID" />
+          <ScalarProperty Name="BetPlacedID" ColumnName="BetPlacedID" />
+          <ScalarProperty Name="Points" ColumnName="Points" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BetTypeTables">
+      <EntityTypeMapping TypeName="premierleagueModel.BetTypeTable">
+        <MappingFragment StoreEntitySet="BetTypeTable">
+          <ScalarProperty Name="BetTypeID" ColumnName="BetTypeID" />
+          <ScalarProperty Name="BetDescription" ColumnName="BetDescription" />
+          <ScalarProperty Name="BetCategory" ColumnName="BetCategory" />
+          <ScalarProperty Name="BetValue" ColumnName="BetValue" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GameTables">
+      <EntityTypeMapping TypeName="premierleagueModel.GameTable">
+        <MappingFragment StoreEntitySet="GameTable">
+          <ScalarProperty Name="GameID" ColumnName="GameID" />
+          <ScalarProperty Name="Team1" ColumnName="Team1" />
+          <ScalarProperty Name="Team2" ColumnName="Team2" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="TeamWon" ColumnName="TeamWon" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PlayerTables">
+      <EntityTypeMapping TypeName="premierleagueModel.PlayerTable">
+        <MappingFragment StoreEntitySet="PlayerTable">
+          <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+          <ScalarProperty Name="PlayerName" ColumnName="PlayerName" />
+          <ScalarProperty Name="PlayerType" ColumnName="PlayerType" />
+          <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StatsTables">
+      <EntityTypeMapping TypeName="premierleagueModel.StatsTable">
+        <MappingFragment StoreEntitySet="StatsTable">
+          <ScalarProperty Name="ResultID" ColumnName="ResultID" />
+          <ScalarProperty Name="GameID" ColumnName="GameID" />
+          <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+          <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+          <ScalarProperty Name="Runs" ColumnName="Runs" />
+          <ScalarProperty Name="Wickets" ColumnName="Wickets" />
+          <ScalarProperty Name="Sixes" ColumnName="Sixes" />
+          <ScalarProperty Name="Fours" ColumnName="Fours" />
+          <ScalarProperty Name="NotOut" ColumnName="NotOut" />
+          <ScalarProperty Name="BallsFaced" ColumnName="BallsFaced" />
+          <ScalarProperty Name="MoM" ColumnName="MoM" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TeamTables">
+      <EntityTypeMapping TypeName="premierleagueModel.TeamTable">
+        <MappingFragment StoreEntitySet="TeamTable">
+          <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+          <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Sport" ColumnName="Sport" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTables">
+      <EntityTypeMapping TypeName="premierleagueModel.UserTable">
+        <MappingFragment StoreEntitySet="UserTable">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="MastekID" ColumnName="MastekID" />
+          <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+          <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+          <ScalarProperty Name="Project" ColumnName="Project" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetBets" FunctionName="premierleagueModel.Store.GetBets">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="premierleagueModel.GetBets_Result">
+          <ScalarProperty Name="BetTypeId" ColumnName="BetTypeId" />
+          <ScalarProperty Name="BetDescription" ColumnName="BetDescription" />
+          <ScalarProperty Name="BetCategory" ColumnName="BetCategory" />
+          <ScalarProperty Name="BetValue" ColumnName="BetValue" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetGameDetails" FunctionName="premierleagueModel.Store.GetGameDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="premierleagueModel.GetGameDetails_Result">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="GAME_ID" ColumnName="GAME ID" />
+          <ScalarProperty Name="TEAM_1_ID" ColumnName="TEAM 1 ID" />
+          <ScalarProperty Name="TEAM_2_ID" ColumnName="TEAM 2 ID" />
+          <ScalarProperty Name="TEAM_1_NAME" ColumnName="TEAM 1 NAME" />
+          <ScalarProperty Name="TEAM_2_NAME" ColumnName="TEAM 2 NAME" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetPlayersForMatch" FunctionName="premierleagueModel.Store.GetPlayersForMatch">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="premierleagueModel.GetPlayersForMatch_Result">
+          <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+          <ScalarProperty Name="Player" ColumnName="Player" />
+          <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SaveBets" FunctionName="premierleagueModel.Store.SaveBets" />
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @*<script src="~/Scripts/jquery-3.1.1.js"></script>*@
+    @*@RenderSection("scripts", required: false)*@
+
+
+
+    <script type="text/javascript">
+        $(function () {
+            $('.edit-mode').hide();
+            $('.edit-user, .cancel-user').on('click', function () {
+                var tr = $(this).parents('tr:first');
+                tr.find('.edit-mode, .display-mode').toggle();
+            });
+
+            $('.save-user').on('click', function () {
+                var tr = $(this).parents('tr:first');
+                var FirstName = tr.find("#FirstName").val();
+                var LastName = tr.find("#LastName").val();
+                var UserID = tr.find("#UserID").html();
+                tr.find("#lblFirstName").text(FirstName);
+                tr.find("#lblLastName").text(LastName);
+                tr.find('.edit-mode, .display-mode').toggle();
+                var UserModel =
+                {
+                    "ID": UserID,
+                    "FirstName": FirstName,
+                    "LastName": LastName
+                };
+                $.ajax({
+                    url: '/User/UpdateUser/',
+                    data: JSON.stringify(UserModel),
+                    type: 'POST',
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (data) {
+                        alert(data);
+                    }
+                });
+
+            });
+        })
+    </script>
+    @*@{
+                ViewBag.Title = "GameDetails";
+            WebGrid grid = new WebGrid(source: Model, columnNames: new[] { "Date", "GAME_ID", "TEAM_1_NAME", "TEAM_2_NAME" });
+        }
+        <h2>GameDetails</h2>
+
+        @grid.GetHtml(
+        tableStyle: "table",
+        columns: grid.Columns(
+
+        grid.Column(columnName: "Date", header: "Date", format: (item) => string.Format("{0:dd-MMM-yyyy}", item.Date)),
+        grid.Column(columnName: "GAME_ID", header: "Game Id"),
+        grid.Column(columnName: "TEAM_1_NAME", header: "Team 1"),
+        grid.Column(columnName: "TEAM_2_NAME", header: "Team 2"),
+        grid.Column(header: ""
+        , format: (item) =>
+        {
+            var link = Html.ActionLink("Bet", "PlaceBet", new { id = item.GAME_ID });
+            return link;
+        }
+        )
+        ))*@
+
+
+
+
+
+    //@model IEnumerable< mvcproject.Models.GameDetailsViewModel>
+
+    @{
+        ViewBag.Title = "GameDetails";
+        WebGrid grid = new WebGrid(source: Model, columnNames: new[] { "Date", "GAME_ID", "TEAM_1_NAME", "TEAM_2_NAME" });
+    }
+    <h2>GameDetails</h2>
+
+    @grid.GetHtml(
+        tableStyle: "table",
+        columns: grid.Columns(
+
+        grid.Column(columnName: "Date", header: "Date", format: (item) => string.Format("{0:dd-MMM-yyyy}", item.Date)),
+        grid.Column(columnName: "GAME_ID", header: "Game Id"),
+        grid.Column(columnName: "TEAM_1_NAME", header: "Team 1"),
+        grid.Column(columnName: "TEAM_2_NAME", header: "Team 2"),
+        grid.Column(header: ""
+        , format: (item) =>
+        {
+            var link = Html.ActionLink("Bet", "PlaceBet", new { id = item.GAME_ID });
+            return link;
+        }
+        )
+        ))
+
+
+
+
+
+
+
+
+
+
+
